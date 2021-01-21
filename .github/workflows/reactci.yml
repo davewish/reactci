@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -34,9 +34,8 @@ jobs:
         yarn install
         # Build an optimized production build
     - name: Production build      
-       run:|        
-         unset CI
-         yarn build
+      run: |        
+       yarn build
         # Deploy to the S3 server
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
